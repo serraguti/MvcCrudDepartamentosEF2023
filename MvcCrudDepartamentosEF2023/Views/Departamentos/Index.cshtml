@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MvcCrudDepartamentosEF2023.Models.Departamento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Listado de departamentos</h1>
+
+<p>
+    <a asp-action="Insertar" asp-controller="Departamentos">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDepartamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localidad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDepartamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidad)
+            </td>
+            <td>
+                <a asp-controller="Departamentos"
+                    asp-action="Detalles"
+                    asp-route-id="@item.IdDepartamento"
+                    class="btn btn-outline-dark">
+                    Detalles
+                </a>
+                <a asp-controller="Departamentos"
+                    asp-action="Update"
+                    asp-route-id="@item.IdDepartamento"
+                    class="btn btn-outline-info">
+                    Modificar
+                </a>
+                <a asp-controller="Departamentos"
+                    asp-action="Delete"
+                    asp-route-id="@item.IdDepartamento"
+                    class="btn btn-outline-danger">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
